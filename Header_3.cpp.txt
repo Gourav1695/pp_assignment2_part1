@@ -1,0 +1,75 @@
+#include<iostream>
+#include"Header_3.h"
+
+
+Node* insert(Node * & last,std::string &data)
+{
+    
+    if (last == NULL)
+    {
+    Node* temp =new Node;
+    temp -> data = data;
+    last = temp;
+    last -> next = last;
+    return last;
+    }
+    
+    Node *temp =new Node;
+    
+    temp -> data = data;
+    temp -> next = last -> next;
+    last -> next = temp;
+    last = temp;
+    return last;
+
+}
+
+int findlength(Node * &last)
+{  int length=0;
+    struct Node *node;
+    if (last == NULL)
+    { 
+      return 0;
+    }
+    
+    node = last -> next;
+    do
+    {   length++;
+        node = node -> next;
+    } while(node != last -> next);
+
+  return length;
+}
+
+void deleteNode(Node** head,std::string &key)
+{
+ 
+    if(*head == NULL)
+        return;
+         
+  
+    if((*head)->data==key && (*head)->next==*head)
+    {
+        
+        std::cout<<(*head)->data<<"\n";
+        delete(*head);
+        *head=NULL;
+        return;
+    }
+     
+    Node *last=*head,*d;
+     
+    
+    if((*head)->data==key)
+    {
+         
+        
+        while(last->next!=*head)
+        last=last->next;
+             
+        last->next=(*head)->next;
+        std::cout<<(*head)->data<<"\n";
+        delete(*head);
+        *head=last->next;
+    }
+}
