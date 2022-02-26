@@ -1,4 +1,4 @@
-// 2020CSB010 GOURAV KUMAR SHAW
+
 #include <bits/stdc++.h>
 #include <time.h>
 
